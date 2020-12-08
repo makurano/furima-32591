@@ -5,6 +5,7 @@
 ## usersテーブル
  
 | Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
 | email               | string  | null: false |
 | password            | string  | null: false |
 | nickname            | string  | null: false |
@@ -24,6 +25,7 @@
 ## itemsテーブル
 
 | Column             | Type                | Options                         |
+| ------------------ | ------------------- | ------------------------------- |
 | image              | ActiveStorage       | null: false                     |
 | name               | string              | null: false                     |
 | explanation        | text                | null: false                     |
@@ -53,7 +55,8 @@
 ***
 ## sold_itemsテーブル
 
-| Column          | Type                | Options|
+| Column          | Type                | Options                         |
+| --------------- | ------------------- | ------------------------------- |
 | item_id         | reference           | null: false, foreign_key: true  |
 | card_number     | integer             | null: false                     |
 | expiration_math | integer             | null: false                     |
