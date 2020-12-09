@@ -35,6 +35,7 @@
 | user               | references          | null: false, foreign_key: true  |
 
 ### Association
+
 - belongs_to       :user
 - has_one_attached :image
 - has_one          :sold_item
@@ -55,21 +56,13 @@
 | Column          | Type                | Options                         |
 | --------------- | ------------------- | ------------------------------- |
 | item            | references          | null: false, foreign_key: true  |
-| card_number     | integer             | null: false                     |
-| expiration_math | integer             | null: false                     |
-| expiration_year | integer             | null: false                     |
-| security_code   | integer             | null: false                     |
-| buyer_user_id   | references          | null: false, foreign_key: true  |
-| seller_user_id  | references          | null: false, foreign_key: true  |
+| user            | references          | null: false, foreign_key: true  |
 
 ### Association
 
 - has_one :address
 - belongs_to :user
 - belongs_to :item
-
-- add_foreign_key :sold_items, :users, column: :buyer_user_id
-- add_foreign_key :sold_items, :users, column: :seller_user_id
 ***
 ## addressesテーブル
 | Column        | Type                | Options                         |
@@ -77,9 +70,9 @@
 | postal_code   | string              | null: false                     |
 | prefecture_id | ActiveHash, integer | null: false, numericality: true |
 | municipality  | string              | null: false                     |
-| address       | text                | null: false                     |
-| building_name | text                |                                 |
-| phone_number  | integer             | null: false                     |
+| address       | string              | null: false                     |
+| building_name | string              |                                 |
+| phone_number  | string              | null: false                     |
 | sold_item     | references          | null: false, foreign_key: true  |
 
 ### Association
