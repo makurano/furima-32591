@@ -54,7 +54,7 @@
 
 | Column          | Type                | Options                         |
 | --------------- | ------------------- | ------------------------------- |
-| item            | reference          | null: false, foreign_key: true  |
+| item            | references          | null: false, foreign_key: true  |
 | card_number     | integer             | null: false                     |
 | expiration_math | integer             | null: false                     |
 | expiration_year | integer             | null: false                     |
