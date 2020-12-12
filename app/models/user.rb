@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
         with_options presence: true do
           #半角英数字混合
-          validates :email,               format: { with: /\A[a-z0-9]+\z/i, message: "is invalid. Input half-width characters."}
+          validates :email#,               format: { with: /\A[a-z0-9]+\z/i, message: "is invalid. Input half-width characters."}
           #@マーク必須の正規表現?
           validates :encrypted_password
           validates :nickname
