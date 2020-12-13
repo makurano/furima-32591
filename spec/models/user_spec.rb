@@ -23,6 +23,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
+      it 'emailに@が含まれていないと登録できない' do
+        @user.email = 'test.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it 'emailが重複していると登録できない' do
         @user.save
         another_user = FactoryBot.build(:user)
@@ -41,8 +46,20 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
-      it 'passwordに半角英数字が少なくとも1文字ずつ含まれていないと登録できない' do
+      it 'passwordが半角数字のみの場合登録できない' do
         @user.password = '123456'
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+      it 'passwordが半角英字のみの場合登録できない' do
+        @user.password = 'abcdef'
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+      it 'passwordが全角英数字の場合登録できない' do
+        @user.password = 'ａｂｃ１２３'
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
@@ -53,7 +70,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it 'passwordとpassword_confirmationが不一致だと登録できない' do
-        @user.password_confirmation = 'aaa'
+        @user.password_confirmation = 'abcd1234'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
@@ -84,6 +101,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank",
                                                       'First name is invalid. Input full-width characters.')
+      end
+      it 'first_nameに半角英数字が含まれていると登録できない' do
+        @user.first_name = 'aaa123'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
       end
       it 'first_name_katakanaが空だと登録できない' do
         @user.first_name_katakana = ''
