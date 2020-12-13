@@ -16,11 +16,9 @@ class User < ApplicationRecord
       validates :first_name_katakana
     end
 
-    validates :email
     # 半角英数字混合
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
-    validates :encrypted_password
     validates :nickname
     validates :birthday
     
