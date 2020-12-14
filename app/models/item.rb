@@ -13,8 +13,7 @@ class Item < ApplicationRecord
 
 # ここからバリデーション
   with_options presence: true do
-# can't be blankは元の処理とダブる可能性があるので要検証
-    with_options numericality: { other_than: 0, message: "can't be blank" } do
+    with_options numericality: { other_than: 0, message: "select" } do
       validates :category_id
       validates :condition_id
       validates :delivery_fee_id
@@ -24,8 +23,7 @@ class Item < ApplicationRecord
     
     validates :name
     validates :explanation
-    # messageは設定しなくて良いかもしれない。これはオブジェクトの記述。ActiveRecordが範囲外を検知すると勝手に出すかもしれない。
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 } #message: "Out of setting range"}
     validates :image
   end
 end
