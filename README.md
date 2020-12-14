@@ -28,7 +28,7 @@
 | explanation        | text                | null: false                     |
 | category_id        | ActiveHash, integer | null: false, numericality: true |
 | condition_id       | ActiveHash, integer | null: false, numericality: true |
-| delivery_dee_id    | ActiveHash, integer | null: false, numericality: true |
+| delivery_fee_id    | ActiveHash, integer | null: false, numericality: true |
 | prefecture_id      | ActiveHash, integer | null: false, numericality: true |
 | delivery_day_id    | ActiveHash, integer | null: false, numericality: true |
 | price              | integer             | null: false                     |
