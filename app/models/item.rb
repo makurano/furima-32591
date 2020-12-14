@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   # 商品購入履歴テーブル導入時に実装する
   # has_one :sold_item
 
-  extend ActiveHash::Associations::ActiveRecordExtentions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition 
   belongs_to :delivery_fee 
