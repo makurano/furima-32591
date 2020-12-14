@@ -35,19 +35,19 @@ RSpec.describe Item, type: :model do
       it 'category_idが未選択だと保存できない' do
         @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category select")
+        expect(@item.errors.full_messages).to include('Category select')
       end
       # conditionに関するテスト
       it 'condition_idが未選択だと登録できない' do
         @item.condition_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition select")
+        expect(@item.errors.full_messages).to include('Condition select')
       end
       # delivery_feeに関するテスト
       it 'delivery_fee_idが未選択だと登録できない' do
         @item.delivery_fee_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee select")
+        expect(@item.errors.full_messages).to include('Delivery fee select')
       end
       # prefectureに関するテスト
       it 'prefecture_idが未選択だと登録できない' do
@@ -65,37 +65,37 @@ RSpec.describe Item, type: :model do
       it 'priceが空だと登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
+        expect(@item.errors.full_messages).to include("Price can't be blank", 'Price is not a number')
       end
       it 'priceの数値が300未満だと登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceの数値が10_000_000以上だと登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'priceに全角数字が入力されていると登録できない' do
         @item.price = '５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceに全角英字が入力されていると登録できない' do
         @item.price = 'ａｂｃ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceに日本語が入力されていると登録できない' do
         @item.price = '五百円'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceに半角英字が入力されていると登録できない' do
         @item.price = 'abc'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
     end
   end

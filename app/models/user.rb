@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   with_options presence: true do
-
     # 全角での入力「あ〜漢字」正規表現
     with_options format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters.' } do
       validates :last_name
@@ -21,6 +20,5 @@ class User < ApplicationRecord
     validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
     validates :nickname
     validates :birthday
-    
   end
 end
