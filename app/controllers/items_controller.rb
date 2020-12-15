@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.valid?
-      @item.save
+    @item.valid?
+    if @item.save
       redirect_to action: :index
     else
       render :new
@@ -29,9 +29,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
-    if item.valid?
-      item.update(item_params)
+    @item = Item.find(params[:id])
+    @item.valid?
+    if @item.update(item_params)
       redirect_to action: :show
     else
       render :edit
