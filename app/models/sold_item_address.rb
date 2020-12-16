@@ -1,4 +1,5 @@
 class SoldItemAddress
+  
   include ActiveModel::Model
   # user_idとitem_idは不要かもしれない
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number
@@ -15,8 +16,8 @@ class SoldItemAddress
   end
 
   def save
-    sold_item = SoldItem.create( user_id: current_user.id, item_id: Item.find(params[:id]) )
-    address = Address.create( postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building_name: building_name, phone_number: phone_number, sold_item_id: sold_item.id )
+    sold_item = SoldItem.create( user_id: user_id, item_id: item_id )
+    Address.create( postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building_name: building_name, phone_number: phone_number, sold_item_id: sold_item.id )
   end
 
 

@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :sold_item
-  extend ActiveHash::Associations::ActiveRecordExtentions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
 
 
