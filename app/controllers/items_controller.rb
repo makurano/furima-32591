@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.valid?
     if @item.save
       redirect_to action: :index
     else
@@ -28,7 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.valid?
     if @item.update(item_params)
       redirect_to action: :show
     else
@@ -37,7 +35,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.valid?
     if @item.destroy
       redirect_to action: :index
     else
