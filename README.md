@@ -99,7 +99,7 @@
 - include ActiveHash::Associations
 - has_many :items
 - include ActiveHash::Associations
-- has_many :sold_items
+- has_many :addresses
 ***
 # ActiveStorage
 
