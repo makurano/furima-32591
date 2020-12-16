@@ -1,8 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  # 商品購入履歴テーブル導入時に実装する
-  # has_one :sold_item
+  has_one :sold_item
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

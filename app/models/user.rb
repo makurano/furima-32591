@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :items
+  has_many :sold_items
 
   with_options presence: true do
     # 全角での入力「あ〜漢字」正規表現
