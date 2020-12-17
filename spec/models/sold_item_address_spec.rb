@@ -17,6 +17,12 @@ RSpec.describe SoldItemAddress, type: :model do
     end
 
     context '購入情報が保存できないとき' do
+      # tokenに関するテスト
+      it 'tokenが正しく生成されない（カード情報が不正）だと保存できない' do
+        @sold_item_address.token = ""
+        @sold_item_address.valid?
+        expect(@sold_item_address.errors.full_messages).to include("Token can't be blank")
+      end
       # postal_codeに関するテスト
       it 'postal_codeが空だと保存できない' do
         @sold_item_address.postal_code = ""

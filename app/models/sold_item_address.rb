@@ -2,7 +2,7 @@ class SoldItemAddress
   
   include ActiveModel::Model
   # user_idとitem_idは不要かもしれない
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :token
 
   # 元はaddressモデルのバリデーション
   with_options presence: true do
@@ -13,6 +13,7 @@ class SoldItemAddress
     validates :address
     # 数字だけの正規表現
     validates :phone_number, format: { with: /\A\d{11}\z/, message: 'Input only number' }
+    validates :token
   end
 
   def save
