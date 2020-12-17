@@ -1,5 +1,8 @@
 class SoldItemsController < ApplicationController
-  before_action :set_item_id, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :set_item_id
+  before_action :prevent_sold_item
+  before_action :prevent_myindex
   def index
     @sold_item_address = SoldItemAddress.new
   end
@@ -33,6 +36,21 @@ class SoldItemsController < ApplicationController
       card: sold_item_params[:token],
       currency: 'jpy'
     )
+  end
+
+  # 売却済み商品の購入ページに遷移できない処理
+  def prevent_sold_item
+    # 購入テーブルに既に商品が含まれている（購入済み）か判定
+    if @item.sold_item.present?
+      redirect_to root_path
+    end
+  end
+
+  # ログインユーザーが自分の商品購入ページにログインできない処理
+  def prevent_myindex
+    if current_user.id == @item.user.id
+      redirect_to root_path
+    end
   end
 
 end
