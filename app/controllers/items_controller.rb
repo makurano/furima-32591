@@ -41,7 +41,6 @@ class ItemsController < ApplicationController
     else
       render :show
     end
-    
   end
 
   private
@@ -55,14 +54,10 @@ class ItemsController < ApplicationController
   end
 
   def prevent_edit
-    unless current_user.id == @item.user_id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless current_user.id == @item.user_id
   end
 
   def prevent_sold_item
-    if @item.sold_item.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.sold_item.present?
   end
 end
