@@ -1,10 +1,11 @@
 class SoldItemAddress
   include ActiveModel::Model
-  # user_idとitem_idは不要かもしれない
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :token
 
   # 元はaddressモデルのバリデーション
   with_options presence: true do
+    validates :user_id
+    validates :item_id
     # ３桁-４桁の正規表現
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'Input correctly' }
     validates :prefecture_id, numericality: { other_than: 0, message: 'select' }

@@ -17,6 +17,18 @@ RSpec.describe SoldItemAddress, type: :model do
     end
 
     context '購入情報が保存できないとき' do
+      # user_idに関するテスト
+      it 'user_idが存在しないと保存できない' do
+        @sold_item_address.user_id = ''
+        @sold_item_address.valid?
+        expect(@sold_item_address.errors.full_messages).to include("User can't be blank")
+      end
+      # item_idに関するテスト
+      it 'item_idが存在しないと保存できない' do
+        @sold_item_address.item_id = ''
+        @sold_item_address.valid?
+        expect(@sold_item_address.errors.full_messages).to include("Item can't be blank")
+      end
       # tokenに関するテスト
       it 'tokenが正しく生成されない（カード情報が不正）だと保存できない' do
         @sold_item_address.token = ''
@@ -52,6 +64,11 @@ RSpec.describe SoldItemAddress, type: :model do
       # prefecture_idに関するコード
       it 'prefectureを選択していないと保存できない' do
         @sold_item_address.prefecture_id = ''
+        @sold_item_address.valid?
+        expect(@sold_item_address.errors.full_messages).to include('Prefecture select')
+      end
+      it 'prefectureが0だと保存できない' do
+        @sold_item_address.prefecture_id = 0
         @sold_item_address.valid?
         expect(@sold_item_address.errors.full_messages).to include('Prefecture select')
       end
