@@ -20,7 +20,5 @@ class Prefecture < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :items
-  # 商品購入履歴テーブルで実装すること
-  # include ActiveHash::Associations
-  # has_many :sold_items
+  has_many :addresses
 end
