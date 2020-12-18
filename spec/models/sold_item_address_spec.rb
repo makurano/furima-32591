@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe SoldItemAddress, type: :model do
   describe '購入情報の保存' do
     before do
-      @sold_item_address = FactoryBot.build(:sold_item_address)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @sold_item_address = FactoryBot.build(:sold_item_address, user_id: @user.id, item_id: @item.id)
     end
 
     context '購入情報が保存できるとき' do
