@@ -40,15 +40,15 @@
 - has_one_attached :image
 - has_one          :sold_item
 
-- extend ActiveHash::Associations::ActiveRecordExtentions
+- extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-- extend ActiveHash::Associations::ActiveRecordExtentions
+- extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :condition 
-- extend ActiveHash::Associations::ActiveRecordExtentions
+- extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
-- extend ActiveHash::Associations::ActiveRecordExtentions
+- extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :delivery_fee 
-- extend ActiveHash::Associations::ActiveRecordExtentions
+- extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :delivery_day
 ***
 ## sold_itemsテーブル
@@ -78,7 +78,7 @@
 ### Association
 
 - belongs_to :sold_item
-- extend ActiveHash::Associations::ActiveRecordExtentions
+- extend ActiveHash::Associations::ActiveRecordExtensions
 - belongs_to :prefecture
 ***
 # ActiveHash
